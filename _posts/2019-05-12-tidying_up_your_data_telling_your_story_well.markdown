@@ -1,0 +1,21 @@
+---
+layout: post
+title:      "Tidying up your Data: Telling your story well"
+date:       2019-05-12 22:40:19 +0000
+permalink:  tidying_up_your_data_telling_your_story_well
+---
+
+
+The process of cleaning your data is one of the most important (and time consuming!) parts of the job.  I find the cleaning process to be fun as well because each data set is a like a story to be interpreted. Getting the correct interpretation can be difficult when the data is formatted in a strange or unexpected way. With most data sets, you will encounter some some pieces of data that don't necessarily help to contribute to building the narrative. Outliers, missing values and other "artifacts" will hurt the accuracy of any model you create. While working through the Module 1 Final Project, there were some rather interesting pieces of data that I needed to figure out how to handle.
+
+Python and its data science libraries make it very easy to spot data that may be problematic. The *df.describe()* function works well to get a general overview of the data you're dealing with, showing the 5-point statistics. During my exploration of the project there were some values dealing with the number of bedrooms that negatively impacted the model accuracy. I eventually decided to drop the row with the offending data. I personally feel strange about dropping data that is valid as you are intentionally omitting data which would seem counterintuitive to the process of modeling. I figure better to have a "one bad apple spoils the bunch" mentality toward dealing with outliers. 
+
+Another common issue and also one I encountered in this project is missing data. Filling in values or dropping columns would typically be the way to handle these type of issues.  I generally prefer to not drop columns but there are definitely cases where its better to do so. A column with many of the values missing would be an example but I would also review the correlation of the particular column(feature) with the values I want to predict later in the process to confirm if dropping is necessary. Filling in the values resonates well with me, but what do you use to fill in the missing values? Generally if it makes sense, mean or median would be my choice with mode only being used if it makes sense to look solely at commonly occurring values. During the project there was a valid case for filling in one of the columns that contained missing values with zeros (using the *df.fillna()* function). 
+
+Data set values generally come as numerical data types during the initial import. A lot of the time this makes sense, but determining if a value should actually be categorical or remain numerical is essential to building better performing models. Numerical data in context to this project suggests that "more is better" without more of an interpretation. This can lead to interesting results with the model as the data cannot(should not) always be interpreted this way with out more context. A particular feature of my project(homes with a waterfront view) was numerical but it did not make sense as because generally a home is in view of water or isn't (binary data). I used the Pandas function *pd.getdummies()* to one-hot encode the values. It's also important to drop the old columns from which the categories were derived. There were also missing values in the column so I made the assumption that these properties were not in view of a waterfront so those were filled with zero's to indicate 'false'. Including these values definitely helped with the accuracy of the model predictions(Waterfront View= $$$$). 
+
+Having a good understanding of the data cleaning process and having a thoughtful, careful approach is key to having the data tell the story accurately. The cleaning/exploration process is one of the more enjoyable aspects of the workflow in my opinion because each data set comes with its own unique story and many interesting(funny) hypotheses' can be crafted from combing through the data. During the cleaning process, I keep asking myself  "Does this make sense" or "Is the data in alignment with what I am trying to say". Overall with as stressful as this project was, I enjoyed the various aspects of the Data Science life cycle from start to finish. 
+
+
+
+
