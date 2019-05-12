@@ -1,7 +1,7 @@
 ---
 layout: post
-title:      "Tidying up your Data: Telling your story well"
-date:       2019-05-12 22:40:19 +0000
+title:      "Tidying up your Data: Telling Your Story Well"
+date:       2019-05-12 18:40:19 -0400
 permalink:  tidying_up_your_data_telling_your_story_well
 ---
 
